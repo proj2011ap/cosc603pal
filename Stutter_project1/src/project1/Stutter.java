@@ -6,7 +6,7 @@ public class Stutter
 {
 	//static Scanner console = new Scanner(System.in);
 
-  public static void main(String[] args) //throws FileNotFoundException
+  public static void main(String[] args) throws FileNotFoundException
 
   {
 	  try{
@@ -21,12 +21,12 @@ public class Stutter
           while ((lineRead = br.readLine()) != null)
           {
         	  lineRead = br.readLine();
-        	  System.out.println(lineRead);
+        	//  System.out.println(lineRead);
         	  words = lineRead.split(" ");
 
-        	  for (int i=0; i <words.length; i++)
+        	  for (int i=0; i <words.length - 1; i++)
         	  {
-        		  //System.out.println(lineRead);        		        
+        		  //System.out.println(lineRead);          		  
         		  if(words[i].equals(words[i+1]))
         		  {
         			  System.out.println ("Repeated word on line " + lineNo + ": " +
@@ -36,8 +36,9 @@ public class Stutter
         		  {
         			  words[i] = words[i+1];  
         		  }         		   
-        	  }
-        	  ++lineNo;        	  
+        	  }        	  
+        	  ++lineNo; 
+        	  continue;
           }
 
           br.close();

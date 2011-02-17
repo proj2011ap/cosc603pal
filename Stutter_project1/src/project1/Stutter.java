@@ -1,46 +1,52 @@
 package project1;
 
 import java.io.*;
-import java.util.*;
 
 public class Stutter
 {
-	public static void main (String args[])							
-	{
-		String [] words;
-		try
-		{
-			int lineNo = 1;
-			
-		    Scanner inFile = new Scanner(new FileReader("Project1_Test_File.txt"));
-		    // Read a line of text
-		    System.out.println("File can be read"); 
-		   
-		    
-		    while(inFile.hasNext())
-		    {
-		    	String line = inFile.nextLine();
-		    	words = line.split(" ");
-			    for(int i = 0; i < line.length(); i++)
-			    {
-			    	//System.out.println(words[i]);			    	
-			    	if(words[i].equals(words[i+1]))
-			    		++lineNo;
-			    		System.out.println("Repeated word on line "+
-			    				lineNo+": "+words[i]);		   	
-			    }
-			    
-		    }   
-		    		    
-		    inFile.close();		
-		}catch (IOException e){
-			System.err.println ("Unable to read from file");
-			System.exit(-1);
-		}		
-		
-	}	
+	//static Scanner console = new Scanner(System.in);
+
+  public static void main(String[] args) //throws FileNotFoundException
+
+  {
+	  try{
+		  
+          String[] words = new String[100]; 
+          File inFile = new File("Project1_Test_File.txt");
+          int lineNo = 1;
+          BufferedReader br = new BufferedReader(new InputStreamReader(
+          new FileInputStream(inFile)));        
+            
+          String lineRead = br.readLine();
+          while ((lineRead = br.readLine()) != null)
+          {
+        	  lineRead = br.readLine();
+        	  System.out.println(lineRead);
+        	  words = lineRead.split(" ");
+
+        	  for (int i=0; i <words.length; i++)
+        	  {
+        		  //System.out.println(lineRead);        		        
+        		  if(words[i].equals(words[i+1]))
+        		  {
+        			  System.out.println ("Repeated word on line " + lineNo + ": " +
+        	                     words[i]+ " " + words[i+1]);        			  
+        		  }
+        		  else
+        		  {
+        			  words[i] = words[i+1];  
+        		  }         		   
+        	  }
+        	  ++lineNo;        	  
+          }
+
+          br.close();
+	  }catch (IOException e) {
+    // Print out the exception that occurred
+    System.out.println("Unable to create ");
+    }
+
+
+  }
+
 }
-
-
-
-	

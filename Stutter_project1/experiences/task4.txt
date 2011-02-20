@@ -1,0 +1,5 @@
+In this task, i have re-engineered a C code to Java. It was very good experience. Although I know C++ not exactly C, but the input file and output file provided for the assignment were helpful to thoroughly understand the C code.
+
+After writing the Java code in eclipse, I created the documentation following the guideline and put some comments inside the code to make it more comprehensible. Again creating documentation is a very good and interesting task for me. It will be helpful for the future programmer or developer if the documentation is nice and intelligible.
+
+I will put all the four tasks in SVN repository in google code project. But SVN sometimes does not work perfect from my home computer if the server is down or busy. Still all the steps I have followed here for coding as well as documentation are really very interesting and worth learning. 

@@ -1,0 +1,4 @@
+Configuration management using eclipse and subversion:
+
+It was very interesting to see my code goes to subversion that is cheked in as well as I can check out other codes from SVN using this configuration management tool. The setup of the SVn from eclipse took long time because I could not check out any project from SVN due to some reason, may be server was down.
+Although I had previous experience of using subversion with netbeans, but eclipse subversion is more interesting as I know how to use it properly.

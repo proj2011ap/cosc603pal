@@ -1,0 +1,7 @@
+Repeated word on line 1: software software
+Repeated word on line 1: testing testing
+Repeated word on line 1: and and
+Repeated word on line 3: maintenance maintenance
+Repeated word on line 3: is is
+Repeated word on line 3: really really
+Repeated word on line 5: fun fun

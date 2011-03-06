@@ -41,7 +41,7 @@ public class Stutter_Web_App implements EntryPoint {
 		final Button sendButton = new Button("Send");
 		final TextArea textArea = new TextArea();
 		textArea.setCharacterWidth(80);
-		textArea.setVisibleLines(50);
+		textArea.setVisibleLines(15); //changed to reduce line numbers visible
 		textArea.getCharacterWidth();
 		textArea.getVisibleLines();
 		textArea.setText("The software testing and maintenence is Fun!");
@@ -53,7 +53,7 @@ public class Stutter_Web_App implements EntryPoint {
 
 		// Add the nameField and sendButton to the RootPanel
 		// Use RootPanel.get() to get the entire body element
-		RootPanel.get("textAreaContainer").add(textArea);
+		RootPanel.get("textFieldContainer").add(textArea);
 		RootPanel.get("sendButtonContainer").add(sendButton);
 		RootPanel.get("errorLabelContainer").add(errorLabel);
 		
@@ -75,7 +75,7 @@ public class Stutter_Web_App implements EntryPoint {
 		dialogVPanel.addStyleName("dialogVPanel");
 		dialogVPanel.add(new HTML("<b>Sending text to the server:</b>"));
 		dialogVPanel.add(textToServerLabel);
-		dialogVPanel.add(new HTML("<br><b>Server replies:</b>"));
+		dialogVPanel.add(new HTML("<br><b>Server replies:</b></br>"));
 		dialogVPanel.add(serverResponseLabel);
 		dialogVPanel.setHorizontalAlignment(VerticalPanel.ALIGN_RIGHT);
 		dialogVPanel.add(closeButton);
@@ -137,8 +137,7 @@ public class Stutter_Web_App implements EntryPoint {
 
 							public void onSuccess(String result) {
 								dialogBox.setText("Remote Procedure Call");
-								serverResponseLabel
-										.removeStyleName("serverResponseLabelError");
+								serverResponseLabel.removeStyleName("serverResponseLabelError");
 								serverResponseLabel.setHTML(result);
 								dialogBox.center();
 								closeButton.setFocus(true);

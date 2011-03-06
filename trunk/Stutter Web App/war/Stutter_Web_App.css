@@ -17,13 +17,13 @@ h1 {
 
 /** Most GWT widgets already have a style name defined */
 .gwt-DialogBox {
-  width: 400px;
+  width: 500px;
   
 }
 
 .gwt-TextArea {
-	lenght: 600px;
-	width:  400px;
+	lenght: 20px;
+	width:  600px;
 }
 
 .dialogVPanel {

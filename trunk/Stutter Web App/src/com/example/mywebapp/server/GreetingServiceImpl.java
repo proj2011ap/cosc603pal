@@ -23,29 +23,32 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 		else
 		{
 			int numberOfLines = 1;
-	   		String[] line = null;
+	   		String[] lines = null;
 	   		String lastWord = null;
+	   		String results = "";
+	   			
 
 			// Get the first line from the file argument
 	   	//	line = input.readLine();
-	   		line = input.split("\n");
+	   		lines = input.split("\n");
 	   		// Keep reading and analyzing lines until end of file
-	   		while (line != null){
+	   		for (int x = 0; x < lines.length; x++){
 	   			
 	   			// Splits the line into words and puts in an array of strings
-	   			String[] words = input.split(" ");
+	   			String[] words = lines[x].split(" ");
 
 	   			// Compare with the last word on the previous line
-	   			if (words [0].equals (lastWord))
-	   				System.out.println ("Repeated word on line " + numberOfLines + ": " + words[0]);
+	   		//	if (words [0].equals (lastWord))
+	   			//	System.out.println ("Repeated word on line " + numberOfLines + ": " + words[0]);
 
 	   			// Stop before the end, nothing to compare the last word with
 	   			for (int i = 0; i < (words.length-1); i++){
 	   				// Check to see if the current and subsequent words are the same
 	   				if (words [i].equals (words [i+1]))
-	   					return ("Repeated word on line " + numberOfLines + ": " + words [i]);
-	   			//	else
-	   				//	return(" No repeated words found.");	   					
+	   					results = results + "Repeated word on line " + numberOfLines +
+	   					": " + words [i] + "." + "\n";
+	   				//else
+	   					//return(" No repeated words found.");	   					
 	            }
 	   			
 	   			// Save last word in the line
@@ -53,11 +56,12 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 	   			// Get the next line from the file argument
 	   		//	line = input.readLine();
 	   			// Increment line counter
-	   			numberOfLines++;
-	   		//	continue;
-		}
+	   			numberOfLines++;	   			
+		}	   		
 	   		
-		return input;
+	   		if(results.isEmpty())
+	   			results = " No repeated words found.\n";
+		return results;
 	   }
 	}
 
@@ -67,12 +71,12 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 	 * 
 	 * @param html the html string to escape
 	 * @return the escaped string
-	 */
+	 
 	private String escapeHtml(String html) {
 		if (html == null) {
 			return null;
 		}
 		return html.replaceAll("&", "&amp;").replaceAll("<", "&lt;")
 				.replaceAll(">", "&gt;");
-	}
+	} */
 }

@@ -47,7 +47,6 @@ public class Stutter_Web_App implements EntryPoint {
 		textArea.setText("The software testing and maintenence is Fun!");
 		final Label errorLabel = new Label();	
 		
-		
 		// We can add style names to widgets
 		sendButton.addStyleName("sendButton");
 

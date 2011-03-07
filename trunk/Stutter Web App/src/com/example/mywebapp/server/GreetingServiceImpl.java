@@ -46,7 +46,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 	   				// Check to see if the current and subsequent words are the same
 	   				if (words [i].equals (words [i+1]))
 	   					results = results + "Repeated word on line " + numberOfLines +
-	   					": " + words [i] + "." + "\n";
+	   					": " + words [i] + "<br>";
 	   				//else
 	   					//return(" No repeated words found.");	   					
 	            }

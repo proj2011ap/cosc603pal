@@ -1,0 +1,82 @@
+Name: Antara Pal							Project # 3
+Due: 03.20.2011
+
+Task 4:
+Q.Briefly describe how this failure is handled by JUnit. This should partly emphasize the idea that, when you get a test case failure, the first step is to decide whether it is the test case code (i.e., a false positive) or the actual source code that is in error (the idea as Offutt describes as the adversary positions of Level 1 and Level 2 testing maturities – see Section 1.1.2).  
+Ans:
+The JUnit test can determine the test file failures of a java program.
+In failure trace stack it is shown that the failure occured due to some error in CardsTest.java, and in line 25. Although the program does not show any errors after changing the name from TYPE_CHANCE to TYPE_CC in last assertEquals statement inside testCardType() method. Only after running JUnit test, it was confirmed that it is the test code failure.
+The idea as Offutt describes as the adversary positions of Level 1 and Level 2 testing maturities; in this case this is Level 2 testing to show failures. 
+
+
+Task 5:
+Q.Briefly describe if this omission is an oversight on the part of Eclipse’s refactoring operation and why or why not. Additionally, briefly describe how (or if) this operation is any different than a simple find all and replace.  
+Ans.
+The omission is not an oversight on the part of Eclipse's refactoring operation. The parameter inside setTheOwner() method will be same after refactoring because the parameters are local to the method. Unlike many other languages, Java has no mechanism for changing the value of an actual parameter.
+Refactoring in eclipse is very useful for renaming rather than using ctrl+f to find out the similar words and replcaing them manually. Renaming using eclipse is reliable for a huge program with many classes and subclasses and/or methods. If one variable name has to be changed then the references also need to be changed. Refactoring using eclipse does that job on behalf of the programmer and does it very fast without any errors.
+
+
+Task 6:
+Q.Briefly describe your experience with this task and for which design smells pushing down or pulling up a class’s field(s) and/or associated methods could help make the code more maintainable and why.  
+Ans.
+The pushing down and pulling up refactoring is very interesting to see the code changes so easily using elcipse refatoring. Before making any changes, I had to pay attention to the code where the field "available" is used. Those references (isAvailable() and setAvailable() methods) to the field also needed to be pushed down. 
+In this scenario, the pushing down is not a good idea, as because other classes like GameMaster.java and Player.java also depend on the Cell.java class and its methods. Those classes call the methods from Cell.java and can not find that, so it shows error in the code.
+For design smells like Duplicate Code, Class is Too Large, Divergent Changes, Shotgun Surgery, Feature Envy pushing down or pulling up a class’s field(s) and/or associated methods could help make the code more maintainable.
+If any method or field is used repeatedly in many classes, it is better to make it separate. Then it needs to keep in a separate or super class and access it from other classes. Here, Cell.java is a superclass which has "available" field and its methods. Its subclasses and other dependable classes use this field and method. So pusihing down will bring up the duplicate code in other classes, making the program unnecessarily vast and error prone. Similarly, pulling up of one field or method from various classes and then make a separare method or class would make a code more compact and maintainable.
+
+
+Task 7:
+Q.Briefly describe your experience with this task and for which design smells extracting an interface could help make the code more maintainable and why. In your description, be sure to include a description of which methods you extracted into the interface and what new files were created in this operation.
+Ans.
+Extracting an interface is a kind of eliminating design smell where the commonalities are separated out into a subpart. The common methods getTheOwner() and Owner(Player owner) are separated from Cell.java into an interface IOwnable. A new file IOwnable.java has been created due to extracting of an interface (refactoring). The Cell.java class implements IOwnable to get its functionalities. In my opinion, it is not easy to decide which methods are to be included during interface extraction if the "owner" field is used in many places.
+For design smells like Duplicate Code, Method is Too Long, Class is Too Large and Too Many Parameters, extracting an interface could help make the code more maintainable. Gathering up the little pieces into aggregate subparts or collecting parameters into aggregate subparts would make code much easier to understand and maintainable.
+
+
+
+Task 8:
+Q.Briefly describe your experience with this task including the method signature you extracted and why you chose this one.
+Ans.
+In second option of method extraction, the method signature is: private int calculateMonopoliesRent(int rentToCharge) which is actually performed in this refactoring. In case of previous option of changing method signature which was not performed here could be: private int calculateMonopoliesRent(int rentToCharge, String[] monopolies). The first option is not a good design as it involves too many parameters comparing to second one. The method extraction is useful if there is any design smell like Duplicate Code, or Method is Too Large, or Class is Too Large.
+
+
+Task 9:
+Q.Briefly describe your experience with this task and for which design smells creating a local variable from repeated code could help make the code more maintainable and why. In addition, comment on whether it is always OK to do this to a function call and whether it could affect the correctness of a program. 
+Ans.
+In case of Duplicate Code, creating a local variable from repeated code could help make the code more maintainable. The code or method call (in this example cell.getColorGroup()) which is repeated in many places inside a single class(GameBoard.java), minimizes code cohesion inside a single class. Here I replaced the method call with local variable(colorGroup).
+The previous part of the code is shown below:
+public void addCell(PropertyCell cell) {
+		int propertyNumber = getPropertyNumberForColor(cell.getColorGroup());
+		colorGroups.put(cell.getColorGroup(), new Integer(propertyNumber + 1));
+       		 cells.add(cell);	}
+After refactoring the subcode looks like:
+public void addCell(PropertyCell cell) {
+String colorGroup = cell.getColorGroup();
+		int propertyNumber = getPropertyNumberForColor(colorGroup);
+		colorGroups.put(colorGroup, new Integer(propertyNumber + 1));
+       		 cells.add(cell);	}
+
+I think that it is always OK to do this to a function call and it would not affect the correctness of a program. It makes the code more easily understandable and maximizes cohesion. 
+
+
+Task 10:
+Q.Briefly describe your experience with this task and for which design smells changing a method’s signature could help make the code more maintainable and why. In addition, comment on why things are changing in other class than just Cell.java and how this affected the definitions of any other classes besides Cell.java. 
+Ans.
+Changing method signature is a type of refactoring which changes the physical structure of code and classes. It is much more different than other refactoring techniques. It needs some mannual modifications as well. I changed the method to boolean to get a return type true or false and public so that other classes can acces it. While any method signature is changed, it affects reference codes/classes also where this method is called or defined. There is a need of fixing the code according to eclipse's suggestion, but needs some prior knowledge while choosing the fixing options. 
+The bad smell like Long Parameter List could be modified during refactoring by chnage method signature. If the parameter in the method is not appropriate, then changing method signature would help to make the code maintainable. For this reason, many more codes/classes might need to be changed accordingly. In this case, the String parameter is passed in the method, as its return type is boolean now. Previously it was void, so there was no need of any return or passing any parameters.
+Currently the method playAction(String msg) is boolean in Cell.java and it has a return type(true or false). Previously it was void method and there was no value/type return. So, in reference codes/classes, the definition of this method changed from void to boolean and needed to add some return value. 
+
+
+Task 11:  Summing it All Up.  Upon completion, each student is to submit a short report that includes your write-ups from the previous tasks (clearly labeled) and the following: 
+•	A description (2-3 paragraphs) of what you learned from this project and how it relates to some of the topics covered in lecture 
+
+I learned a lot from this project regarding refactoring using eclipse. Eclipse is very useful in doing the task for us. The mannual refactoring would be painful without eclipse. Finding or renaming or replacing variables or part of code, renaming a class, extracting code into a method, changing method signature during refactoring are really great features of eclipse.
+In our class lecture we learned about the theory of Bad Smell and what are the solutions of those bad design smells using refactoring. The theory helped me to writeup the experiences and helped me to learn refactoring along with this practical experience as mentioned in the assignment (Project 3).
+
+•	A description (2-3  paragraphs) of what  you liked about Eclipse’s support for refactoring including its strengths and limitations 
+
+The most I liked about Eclipse’s refactoring is that the programmer can easily change the structure of a program to what makes logical sense while rewriting code as little as possible and still keeping its functionality. If refactoring is used on a regular basis to constantly keep a good structure, less time will be needed to fix any bugs and it will be easy to add new code to the design.
+Eclipse has an automatic refatoring tool that can generate code itself.  This refactoring tool can change (i) Physical Structure of the code, (ii) Class Level Structure of the code, (iii) Structure inside a Class. The tool can do all the tasks of refactoring we performed in this assignment almost perfectly. It can suggest many bug fixing options also. But the tool is not fully automatic as in some of the situations the programmer needs to take care. The tool has limitations in changing method signature where we need some mannual modifications. Again in pulling up/ pushing down code, Eclipse tool can not change the reference classes automatically where it needs mannual intervention. To sum it up, there is a very big role of Eclipse tool behind making the refactoring so easy for the programmer.
+
+•	A description (1-2 paragraphs) of how/why unit tests are important when doing refactoring
+Unit tests are important to see if the code is erroneous or not. Before refactoring, Unit test is performed for the whole project to verify if the code works perfect or not. Then after refactoring, again Unit test is performed to see if the whole project has any errors such as spelling mistakes or missing a step in the refactoring.  To prevent and quickly fix these errors, thorough testing should be performed before and after each refactor.
+

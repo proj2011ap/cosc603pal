@@ -25,9 +25,4 @@ public class RectangleTest {
 		assertEquals(3.6056, rect2.getDiagonal(), 0.0001);
 	}
 	
-	@After
-	public void tearDown() throws Exception {
-		rect1 = null;
-		rect1 = null;
-	}
 }

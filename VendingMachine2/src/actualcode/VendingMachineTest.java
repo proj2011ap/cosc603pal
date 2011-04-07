@@ -10,15 +10,14 @@ import org.junit.Test;
 public class VendingMachineTest {
 	VendingMachine vm;
 	VendingMachineItem[] valid_vmi;
-	VendingMachineItem vmi;
-	double price;
-
+	//VendingMachineItem vmi;
+	
 	@Before
 	public void setUp() throws Exception {
 		vm = new VendingMachine();
-		vmi = new VendingMachineItem("coke", 1.0);
+		//vmi = new VendingMachineItem("coke", 1.0);
 		
-		VendingMachineItem[] valid_vmi = new VendingMachineItem[4];
+		valid_vmi = new VendingMachineItem[4];
 		valid_vmi[0] = new VendingMachineItem("coke", 1.0);
 		valid_vmi[1] = new VendingMachineItem("sprite", 1.50);
 		valid_vmi[2] = new VendingMachineItem("mdew", 1.75);
@@ -28,7 +27,10 @@ public class VendingMachineTest {
 	@After
 	public void tearDown() throws Exception {
 		vm = null;
-		valid_vmi = null;
+		valid_vmi[0] = null;
+		valid_vmi[1] = null;
+		valid_vmi[2] = null;
+		valid_vmi[3] = null;
 	}
 	
 	//testing constructor
@@ -46,30 +48,25 @@ public class VendingMachineTest {
 	
 	@Test
 	public final void testAddItem_valid() {
-	vm.addItem(vmi, "A");
-	assertEquals(vmi, vm.getItem("A"));
-				
+	vm.addItem(valid_vmi[0], "A");
+	assertEquals(valid_vmi[0], vm.getItem("A"));				
 	}
 	
 	@Test(expected = VendingMachineException.class)
-	public final void testAddItem_invalid() {
+	public final void testAddItem_invalidCode() {
 	vm.addItem(valid_vmi[0], "Z");
-	assertEquals(valid_vmi[0], "coke");				
+	//assertEquals(valid_vmi[0], "coke");				
 	}
 	
 	@Test(expected = VendingMachineException.class)
 	public final void testAddItem_multipleItem() {
 		vm.addItem(valid_vmi[1], "B");
-		vm.addItem(valid_vmi[1], "B");
-		
-		assertEquals(valid_vmi[0], "coke");				
+		vm.addItem(valid_vmi[1], "B");						
 	}
 
 	@Test
-	public final void testGetItem() {
-		
+	public final void testGetItem() {		
 	}
-
 
 	@Test(expected = VendingMachineException.class)
 	public final void testRemoveItem_slotEmpty() {
@@ -79,7 +76,7 @@ public class VendingMachineTest {
 	@Test
 	public final void testRemoveItem_validCode() {
 		vm.removeItem("A");
-		assertTrue(vm.removeItem("A").equals(valid_vmi));
+		assertEquals(vm.getItem("A"), valid_vmi[0]);		
 	}
 	
 	@Test(expected = VendingMachineException.class)
@@ -95,8 +92,7 @@ public class VendingMachineTest {
 	
 	@Test(expected = VendingMachineException.class)
 	public final void testInsertMoney_invalidBalance() {
-		vm.insertMoney(10.00);
-		assertTrue(vm.getBalance() != 10); // ??? ask??
+		vm.insertMoney(-10.00);		
 	}
 
 	@Test
@@ -109,8 +105,9 @@ public class VendingMachineTest {
 	public final void testMakePurchase_enoughMoney() {
 		vm.makePurchase("C");
 		vm.insertMoney(5.0);
-		assertEquals(vm.removeItem("C"), valid_vmi[2]);
-		assertEquals(vm.getBalance(), 1.75, 0);
+		//assertTrue(vm.insertMoney(5.0), vm.makePurchase("C"));
+		//assertEquals(vm.getItem("C").getPrice()  , valid_vmi[2].getPrice(), 0.0);
+	//	assertEquals(vm.getItem("C").getPrice(), vm.makePurchase("C"));
 	}
 	
 	@Test

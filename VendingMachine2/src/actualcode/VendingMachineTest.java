@@ -1,23 +1,23 @@
-package testcode;
+package actualcode;
 import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import actualcode.VendingMachine;
-import actualcode.VendingMachineException;
-import actualcode.VendingMachineItem;
 
 
 public class VendingMachineTest {
 	VendingMachine vm;
 	VendingMachineItem[] valid_vmi;
+	VendingMachineItem vmi;
 	double price;
 
 	@Before
 	public void setUp() throws Exception {
-		VendingMachine vm = new VendingMachine();
+		vm = new VendingMachine();
+		vmi = new VendingMachineItem("coke", 1.0);
+		
 		VendingMachineItem[] valid_vmi = new VendingMachineItem[4];
 		valid_vmi[0] = new VendingMachineItem("coke", 1.0);
 		valid_vmi[1] = new VendingMachineItem("sprite", 1.50);
@@ -46,8 +46,8 @@ public class VendingMachineTest {
 	
 	@Test
 	public final void testAddItem_valid() {
-	vm.addItem(valid_vmi[0], "A");
-	assertEquals(valid_vmi[0], "coke");
+	vm.addItem(vmi, "A");
+	assertEquals(vmi, vm.getItem("A"));
 				
 	}
 	
@@ -61,25 +61,30 @@ public class VendingMachineTest {
 	public final void testAddItem_multipleItem() {
 		vm.addItem(valid_vmi[1], "B");
 		vm.addItem(valid_vmi[1], "B");
+		
 		assertEquals(valid_vmi[0], "coke");				
 	}
 
 	@Test
 	public final void testGetItem() {
-		//why getItem() is not accessed??
+		
 	}
 
 
-	@Test
+	@Test(expected = VendingMachineException.class)
 	public final void testRemoveItem_slotEmpty() {
-		
+		vm.removeItem(" ");
 	}
 	
 	@Test
+	public final void testRemoveItem_validCode() {
+		vm.removeItem("A");
+		assertTrue(vm.removeItem("A").equals(valid_vmi));
+	}
+	
+	@Test(expected = VendingMachineException.class)
 	public final void testRemoveItem_invalidCode() {
-		vm.removeItem("D");
-		//????????????
-		
+		vm.removeItem("x");		
 	}
 
 	@Test

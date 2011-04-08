@@ -43,7 +43,7 @@ public class VendingMachineItemTest {
 	}
 		
 	@Test(expected = VendingMachineException.class)
-	public final void testVendingMachineItem_invalid() {
+	public final void testVendingMachineItem_invalidPrice() {
 		VendingMachineItem item = new VendingMachineItem("Lays", -1.00);
 		assertEquals("Lays", item.getName());
 		assertEquals(-1.00, item.getPrice(), 0);

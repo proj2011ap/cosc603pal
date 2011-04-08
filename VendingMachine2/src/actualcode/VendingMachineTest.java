@@ -34,12 +34,21 @@ public class VendingMachineTest {
 	}
 	
 	//testing constructor
-	@SuppressWarnings("static-access")
+	//@SuppressWarnings("static-access")
+	/*
 	@Test
 	public final void testVendingMachine_checkslotEmpty() {
 		int NUM_SLOTS = 0;
 		assertEquals(valid_vmi[NUM_SLOTS], 0); // ask???????
 	}
+	*/
+	
+	@Test
+	public final void testVendingMachine_checkslotEmpty() {
+		//assertTrue(vm.getItem(null));
+		
+	}
+	
 	//testing constructor
 	@Test
 	public final void testVendingMachine_checkbalanceZero() {
@@ -60,8 +69,8 @@ public class VendingMachineTest {
 	
 	@Test(expected = VendingMachineException.class)
 	public final void testAddItem_multipleItem() {
-		vm.addItem(valid_vmi[1], "B");
-		vm.addItem(valid_vmi[1], "B");						
+		vm.addItem(valid_vmi[1], "A");
+		vm.addItem(valid_vmi[1], "A");						
 	}
 
 	@Test
@@ -97,23 +106,26 @@ public class VendingMachineTest {
 
 	@Test
 	public final void testGetBalance() {
-		vm.getBalance();
-		assertEquals(vm.getBalance(), valid_vmi[0].getPrice(), 0);
+		vm.getBalance();			
+		assertTrue(vm.getBalance() >= valid_vmi[0].getPrice());
+		
 	}
 
-	@Test
+	@Test // not done
 	public final void testMakePurchase_enoughMoney() {
 		vm.makePurchase("C");
 		vm.insertMoney(5.0);
+		
 		//assertTrue(vm.insertMoney(5.0), vm.makePurchase("C"));
 		//assertEquals(vm.getItem("C").getPrice()  , valid_vmi[2].getPrice(), 0.0);
 	//	assertEquals(vm.getItem("C").getPrice(), vm.makePurchase("C"));
 	}
 	
-	@Test
+	@Test // not done
 	public final void testMakePurchase_emptySlot() {
-		vm.makePurchase("C");
-		assertEquals(vm.makePurchase("C"), valid_vmi[2].getName());
+		vm.makePurchase(" ");		
+		//assertEquals(vm.makePurchase("C"), valid_vmi[2].getName());
+		assertEquals(vm.getItem(" ").getPrice(), vm.balance, 0);
 		
 	}
 

@@ -1,5 +1,5 @@
 package actualcode;
-import static org.junit.Assert.*;
+//import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
@@ -42,11 +42,11 @@ public class VendingMachineItemTest extends TestCase {
 		assertEquals(1.50, item.getPrice(), 0);
 	}
 		
-	@Test(expected = VendingMachineException.class)
+	@Test(expected = actualcode.VendingMachineException.class)
 	public final void testVendingMachineItem_invalidPrice() {
 		VendingMachineItem item = new VendingMachineItem("Lays", -1.00);
-		assertEquals("Lays", item.getName());
-		assertEquals(-1.00, item.getPrice(), 0);
+		//assertEquals("Lays", item.getName());
+		//assertEquals(-1.00, item.getPrice(), 0);
 	}
 
 	/**

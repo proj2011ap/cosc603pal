@@ -1,5 +1,5 @@
 package actualcode;
-import static org.junit.Assert.*;
+//import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
@@ -53,12 +53,12 @@ public class VendingMachineTest extends TestCase {
 		assertEquals(valid_vmi[0], vm.getItem("A"));	
 	}
 	
-	@Test(expected = VendingMachineException.class)
+	@Test(expected = actualcode.VendingMachineException.class)
 	public final void testAddItem_invalidCode() {
 	vm.addItem(valid_vmi[0], "Z");					
 	}
 	
-	@Test(expected = VendingMachineException.class)
+	@Test(expected = actualcode.VendingMachineException.class)
 	public final void testAddItem_multipleItem() {
 		vm.addItem(valid_vmi[1], "A");
 		vm.addItem(valid_vmi[1], "A");						
@@ -70,7 +70,7 @@ public class VendingMachineTest extends TestCase {
 	}
 	*/
 
-	@Test(expected = VendingMachineException.class)
+	@Test(expected = actualcode.VendingMachineException.class)
 	public final void testRemoveItem_slotEmpty() {
 		vm.removeItem(" ");
 	}
@@ -82,7 +82,7 @@ public class VendingMachineTest extends TestCase {
 		assertTrue(vm.getItem("B") == null);
 	}
 	
-	@Test(expected = VendingMachineException.class)
+	@Test(expected = actualcode.VendingMachineException.class)
 	public final void testRemoveItem_invalidCode() {
 		vm.removeItem("x");		
 	}
@@ -96,7 +96,7 @@ public class VendingMachineTest extends TestCase {
 		//current balance is now the previous balance + amount		
 	}
 	
-	@Test(expected = VendingMachineException.class)
+	@Test(expected = actualcode.VendingMachineException.class)
 	public final void testInsertMoney_invalidBalance() {
 		vm.insertMoney(-10.00);		
 	}

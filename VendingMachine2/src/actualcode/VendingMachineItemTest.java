@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
+import junit.framework.TestCase;
 
 /**
  * 
@@ -14,7 +14,7 @@ import org.junit.Test;
  * @author Compaq_Administrator
  *
  */
-public class VendingMachineItemTest {
+public class VendingMachineItemTest extends TestCase {
 	String iname = "chocolate";
 	double iprice = 1.50;
 	VendingMachineItem vi = new VendingMachineItem(iname, iprice);
@@ -54,7 +54,7 @@ public class VendingMachineItemTest {
 	 */
 	@Test
 	public final void testGetName() {
-		assertEquals(vi.getName(), iname);
+		assertEquals(iname, vi.getName());
 	}
 
 	/**
@@ -62,7 +62,7 @@ public class VendingMachineItemTest {
 	 */
 	@Test
 	public final void testGetPrice() {
-		assertEquals(vi.getPrice(), iprice, 0);
+		assertEquals(iprice, vi.getPrice(), 0);
 	}
 
 }

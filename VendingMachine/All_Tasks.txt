@@ -8,6 +8,21 @@ Task 3:
 There is an error in line 17 in RectangleTest.java, (from stack trace in after running Junit test) assertEquals(10.0, rect1.getArea(),0.001); but here I got 25 instead of 10. Because in Point.java file,  this.x = y; which should be this.x = x;
 In Rectangle.java, I have modified getArea() and getDiagonal() methods to simplify the calculations of getting area and getting diagonal length respectively. These simplified methods would make the code more maintaianable.
 
+modified getArea() method:
+public Double getArea() {
+		Double width = Math.abs(p2.x - p1.x);
+		Double height = Math.abs(p2.y - p1.y);
+		return width * height;
+	}
+	
+modified getDiagonal() method:
+
+public Double getDiagonal() {
+		Double width_square = Math.pow((p2.x - p1.x), 2);
+		Double height_square = Math.pow((p2.y - p1.y), 2);
+		return Math.sqrt(width_square + height_square);
+	}
+
 Task 4:
 I found two bugs in VendingMachine project.
 Bug 1:

@@ -1,0 +1,30 @@
+Project # 4									Date : 04/11/2011
+
+Task 2:
+assertEquals("0", 0, tester.fib(0)) method shows that Case 0 should result in 0 while tested  the fib(0).
+Again, first number in fibonacci series is 0. So Case 0 should return 0 instead of 1. I have changed that return value to 0, and the test passed.
+
+Task 3:
+There is an error in line 17 in RectangleTest.java, (from stack trace in after running Junit test) assertEquals(10.0, rect1.getArea(),0.001); but here I got 25 instead of 10. Because in Point.java file,  this.x = y; which should be this.x = x;
+In Rectangle.java, I have modified getArea() and getDiagonal() methods to simplify the calculations of getting area and getting diagonal length respectively. These simplified methods would make the code more maintaianable.
+
+Task 4:
+I found two bugs in VendingMachine project.
+Bug 1:
+I found a bug in private int getSlotIndex(String code) method insie VendingMachine.java class.
+Bug 2:
+There is another bug in:
+if( price < 0 ) {
+	throw new VendingMachineException(PRICE_LESS_THAN_ZERO_MESSAGE);
+
+
+Task 5:
+A description (2-3 paragraphs) of what you learned from this project (particularly Task 4) 
+I have learned how to use Junit in actual situation of testing any java code. It was very nice to learn writing each test methods while it passes. Even it does not pass; I tried many times changing the logic and new thought to make the test method pass. 
+After finishing all the test methods of two test classes, Test suite was made from those two test classes. It was little bit weired experience as test suite did not include test methods automatically which it should do, I think. While running test suite, exception methods did not pass first time. So I had to change the exception codes to make it work. Now all the tests passed.
+
+A description (2-3 paragraphs) of what you liked and didn’t like about JUnit’s support for unit testing.
+JUnit 4.8.1 is a test framework which uses annotation to identify the methods which contain tests. Juint assumes that all test methods can be performed in an arbitrary order. The tests should not depend upon other tests. To write a test with JUnit using Eclipse IDE makes the test writing quicker and easier than before.
+I like Junit for its supporting nature in writing test methods. It is really helpful in software testing and maintainance. The jar file of Junit is really very nice as externeal library to make code testable.
+I did not like Junit while writing the test suite. It did not help me to include all the test classes to inside the test suite automatically. I might be worng in creating test suite. I think everything else was very nice about Junit.
+

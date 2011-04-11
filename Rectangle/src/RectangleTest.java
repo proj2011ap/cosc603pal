@@ -1,6 +1,5 @@
 import static org.junit.Assert.*;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,5 +23,4 @@ public class RectangleTest {
 		assertEquals(5.3852, rect1.getDiagonal(), 0.0001);
 		assertEquals(3.6056, rect2.getDiagonal(), 0.0001);
 	}
-	
 }

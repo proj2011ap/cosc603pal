@@ -44,10 +44,15 @@ public class VendingMachineItemTest extends TestCase {
 		assertEquals("Kitkat", item.getName());	
 		assertEquals(1.50, item.getPrice(), 0);
 	}
+	
 	//tests constructor throwing exception if price is less than zero	
-	@Test(expected = VendingMachineException.class)
+	@Test 
 	public final void testVendingMachineItem_invalidPrice() {
-		new VendingMachineItem("Snickers", -1.50);		
+		try{
+		new VendingMachineItem("Snickers", -1.50);	
+		}
+		catch(VendingMachineException vme){			
+		}
 	}
 
 	/**

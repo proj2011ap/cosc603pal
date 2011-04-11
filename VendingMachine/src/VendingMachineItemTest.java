@@ -31,7 +31,11 @@ public class VendingMachineItemTest extends TestCase {
 		vi = null;
 	}
 
-	/** this method tests the constructor with valid item price
+	/** Constructor which fills in the name and price of the item 
+	 * Precondition: price argument >= 0 
+	 * Postcondition: The name and price of the item is set to be the 
+	 * values in the arguments 
+	 * this method tests the constructor with valid item price
 	 * Test method for {@link VendingMachineItem#VendingMachineItem(java.lang.String, double)}.
 	 */
 	@Test
@@ -40,7 +44,7 @@ public class VendingMachineItemTest extends TestCase {
 		assertEquals("Kitkat", item.getName());	
 		assertEquals(1.50, item.getPrice(), 0);
 	}
-		
+	//tests constructor throwing exception if price is less than zero	
 	@Test(expected = VendingMachineException.class)
 	public final void testVendingMachineItem_invalidPrice() {
 		new VendingMachineItem("Snickers", -1.50);		
@@ -48,6 +52,8 @@ public class VendingMachineItemTest extends TestCase {
 
 	/**
 	 * Test method for {@link VendingMachineItem#getName()}.
+	 * The string corresponding to the name of the vending machine item
+	 *  Postcondition: the actual name of the item is returned
 	 */
 	@Test
 	public final void testGetName() {
@@ -57,6 +63,8 @@ public class VendingMachineItemTest extends TestCase {
 
 	/**
 	 * Test method for {@link VendingMachineItem#getPrice()}.
+	 * The price of the vending machine item in dollars 
+	 * Postcondition: The actual price of the item is returned
 	 */
 	@Test
 	public final void testGetPrice() {

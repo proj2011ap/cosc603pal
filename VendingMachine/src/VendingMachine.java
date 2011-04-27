@@ -134,7 +134,8 @@ public class VendingMachine {
 		if ( item == null) {
 			throw new VendingMachineException(SLOT_MESSAGE + code + IS_EMPTY_MESSAGE);
 		}
-		return item;
+		else 
+			return item;
 	}
 
 	/**

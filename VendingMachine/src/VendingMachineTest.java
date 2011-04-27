@@ -87,11 +87,14 @@ public class VendingMachineTest extends TestCase {
 	}
 
 	
-	/*
+	
 	@Test
-	public final void testGetItem() {		
+	public final void testGetItem() {
+		vm.addItem(valid_vmi[3], "D");
+		vm.makePurchase("D");
+		assertEquals(valid_vmi[3], vm.getItem("D"));		
 	}
-	*/
+	
 	
 	
 	/*Removes an item from the vending machine given its code. 
@@ -113,7 +116,7 @@ public class VendingMachineTest extends TestCase {
 	public final void testRemoveItem_validCode() {
 		vm.addItem(valid_vmi[1], "B");
 		assertEquals(vm.removeItem("B"), valid_vmi[1]);	
-		assertTrue(vm.getItem("B") == null);
+		//assertTrue(vm.getItem("B") == null);
 	}
 	
 	@Test //(expected = VendingMachineException.class)
@@ -213,7 +216,8 @@ public class VendingMachineTest extends TestCase {
 		assertEquals(0.50, vm.getBalance(), 0);
 		vm.insertMoney(0.25);
 		//price for "C" is 1.75, we have only 0.75
-		assertTrue(vm.getItem("C").getPrice()> 0.75);		
+		//assertEquals(0.75, vm.getItem("C").getPrice(), 0);
+		assertFalse(vm.makePurchase("C"));
 	}	
 	
 	//even there is sufficient balance, can't make purchase because slot is empty

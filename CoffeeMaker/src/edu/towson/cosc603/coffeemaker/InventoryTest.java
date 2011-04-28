@@ -46,73 +46,77 @@ public class InventoryTest {
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#Inventory()}.
 	 */
 	@Test
-	public final void testInventory() {
-		fail("Not yet implemented"); // TODO
+	public final void testInventory_enoughIng() {
+		assertTrue(i.enoughIngredients(r1));
 	}
-
+	
+	
 	/**
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#getChocolate()}.
 	 */
 	@Test
 	public final void testGetChocolate() {
-		fail("Not yet implemented"); // TODO
+		assertEquals(0, r1.getAmtChocolate());
 	}
 
 	/**
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#setChocolate(int)}.
-	 */
+	 
 	@Test
 	public final void testSetChocolate() {
 		fail("Not yet implemented"); // TODO
 	}
+	*/
 
 	/**
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#getCoffee()}.
 	 */
 	@Test
 	public final void testGetCoffee() {
-		fail("Not yet implemented"); // TODO
+		assertEquals(6, r1.getAmtCoffee());
 	}
 
 	/**
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#setCoffee(int)}.
 	 */
-	@Test
+ /*	@Test
 	public final void testSetCoffee() {
 		fail("Not yet implemented"); // TODO
 	}
-
+	*/
 	/**
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#getMilk()}.
 	 */
 	@Test
 	public final void testGetMilk() {
-		fail("Not yet implemented"); // TODO
+		assertEquals(1, r1.getAmtMilk());
 	}
 
 	/**
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#setMilk(int)}.
-	 */
+	 
 	@Test
 	public final void testSetMilk() {
 		fail("Not yet implemented"); // TODO
 	}
+	*/
 
 	/**
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#getSugar()}.
 	 */
 	@Test
 	public final void testGetSugar() {
-		fail("Not yet implemented"); // TODO
+		assertEquals(1, r1.getAmtSugar());
 	}
 
 	/**
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#setSugar(int)}.
-	 */
+	 
 	@Test
 	public final void testSetSugar() {
 		fail("Not yet implemented"); // TODO
 	}
+	*/
 
 	/**
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#enoughIngredients(edu.towson.cosc603.coffeemaker.Recipe)}.
@@ -127,10 +131,11 @@ public class InventoryTest {
 
 	/**
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#toString()}.
-	 */
+	 
 	@Test
 	public final void testToString() {
 		fail("Not yet implemented"); // TODO
 	}
+	*/
 
 }

@@ -69,7 +69,7 @@ public class VendingMachineTest extends TestCase {
 	@Test 
 	public final void testAddItem_invalidCode() {
 		try{
-	vm.addItem(valid_vmi[0], "Z");	
+			vm.addItem(valid_vmi[0], "Z");	
 		}
 		catch(VendingMachineException vme){			
 		}
@@ -79,22 +79,30 @@ public class VendingMachineTest extends TestCase {
 	@Test//(expected = VendingMachineException.class)
 	public final void testAddItem_multipleItem() {
 		try{
-		vm.addItem(valid_vmi[1], "A");
-		vm.addItem(valid_vmi[1], "A");	
+		vm.addItem(valid_vmi[1], "B");
+		vm.addItem(valid_vmi[1], "B");	
 		}
 		catch(VendingMachineException vme){			
 		}
 	}
-
 	
+	/*if 4 slots already occupied, it does not allow another item 
+	 *  to add in different slot. for item "B", slot_no 1 
+	 *  is assigned. It is VendingMachineException. */	 
+	@Test
+	public final void testAddItem_slotFull() {
+		try{
+			vm.addItem(valid_vmi[3], "B");			
+		}catch(VendingMachineException vme){			
+		}	
+	}	
 	
 	@Test
 	public final void testGetItem() {
 		vm.addItem(valid_vmi[3], "D");
 		vm.makePurchase("D");
 		assertEquals(valid_vmi[3], vm.getItem("D"));		
-	}
-	
+	}	
 	
 	
 	/*Removes an item from the vending machine given its code. 
@@ -105,12 +113,13 @@ public class VendingMachineTest extends TestCase {
 	@Test //(expected = VendingMachineException.class)
 	public final void testRemoveItem_slotEmpty() {
 		try{
-		vm.removeItem(" ");
+			vm.removeItem(" ");
 		}
 		catch(VendingMachineException vme){			
 		}
 	}
 	
+		
 	//if the code is invalid during removing item throws exception
 	@Test
 	public final void testRemoveItem_validCode() {
@@ -122,9 +131,18 @@ public class VendingMachineTest extends TestCase {
 	@Test //(expected = VendingMachineException.class)
 	public final void testRemoveItem_invalidCode() {
 		try{
-		vm.removeItem("X");		
+			vm.removeItem("X");		
 		}
 		catch(VendingMachineException vme){			
+		}
+	}
+	
+	/* try to remove item already removed */
+	public final void testRemoveItem_alreadyRemoved() {
+		try{
+			vm.removeItem("C");
+			vm.removeItem("C");
+		}catch(VendingMachineException vme){			
 		}
 	}
 	

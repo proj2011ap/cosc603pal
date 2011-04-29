@@ -14,6 +14,7 @@ import org.junit.Test;
  *
  */
 public class InventoryTest {
+	    
 	private CoffeeMaker cm;
 	private Inventory i;
 	private Recipe r1;
@@ -24,14 +25,19 @@ public class InventoryTest {
 	@Before
 	public void setUp() throws Exception {
 		cm = new CoffeeMaker();
-		r1 = new Recipe();
-		r1.setName("Coffee");
+		r1 = new Recipe();		
 		i = cm.checkInventory();
 		
-		r1.setAmtCoffee(6); // ??use case has 3 coffee
+		r1.setName("Coffee");
+		r1.setAmtCoffee(4); 
 		r1.setAmtMilk(1);
 		r1.setAmtSugar(1);
 		r1.setAmtChocolate(0);
+		r1.setPrice(50);
+		i.setChocolate(200);
+		i.setCoffee(200);
+		i.setMilk(200);
+		i.setSugar(200);
 	}
 
 	/**
@@ -40,13 +46,21 @@ public class InventoryTest {
 	@After
 	public void tearDown() throws Exception {
 		cm = null;
+		i = null;
+		r1 = null;
 	}
 
 	/**
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#Inventory()}.
 	 */
 	@Test
-	public final void testInventory_enoughIng() {
+	public final void testInventory_enoughIngr() {
+		assertNotNull(cm.addInventory(15, 15, 15, 15));
+		cm.addRecipe(r1);
+		//assertEquals(15, i.getChocolate());
+		//assertEquals(15, i.getSugar());
+		//assertEquals(15, i.getCoffee());
+		//assertEquals(15, i.getMilk());		
 		assertTrue(i.enoughIngredients(r1));
 	}
 	
@@ -56,86 +70,90 @@ public class InventoryTest {
 	 */
 	@Test
 	public final void testGetChocolate() {
-		assertEquals(0, r1.getAmtChocolate());
+		//i.setChocolate(200);
+		assertEquals(200, i.getChocolate());
 	}
 
 	/**
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#setChocolate(int)}.
-	 
+	 */
 	@Test
 	public final void testSetChocolate() {
-		fail("Not yet implemented"); // TODO
-	}
-	*/
+		assertEquals(200, i.getChocolate());
+	} 
+	
 
 	/**
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#getCoffee()}.
 	 */
 	@Test
 	public final void testGetCoffee() {
-		assertEquals(6, r1.getAmtCoffee());
+	//	i.setCoffee(200);
+		assertEquals(200, i.getCoffee());
 	}
 
 	/**
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#setCoffee(int)}.
 	 */
- /*	@Test
+ 	@Test
 	public final void testSetCoffee() {
-		fail("Not yet implemented"); // TODO
+ 		assertEquals(200, i.getCoffee());
 	}
-	*/
+	
 	/**
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#getMilk()}.
 	 */
 	@Test
 	public final void testGetMilk() {
-		assertEquals(1, r1.getAmtMilk());
+	//	i.setMilk(200);
+		assertEquals(200, i.getMilk());
 	}
 
 	/**
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#setMilk(int)}.
-	 
+	 */
 	@Test
 	public final void testSetMilk() {
-		fail("Not yet implemented"); // TODO
-	}
-	*/
+		assertEquals(200, i.getMilk());
+	} 
+	
 
 	/**
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#getSugar()}.
 	 */
 	@Test
 	public final void testGetSugar() {
-		assertEquals(1, r1.getAmtSugar());
+		//i.setSugar(200);
+		assertEquals(200, i.getSugar());
 	}
 
 	/**
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#setSugar(int)}.
-	 
+	 */
 	@Test
 	public final void testSetSugar() {
-		fail("Not yet implemented"); // TODO
-	}
-	*/
+		assertEquals(200, i.getSugar());
+	} 
+	
 
 	/**
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#enoughIngredients(edu.towson.cosc603.coffeemaker.Recipe)}.
 	 */
 	@Test
 	public final void testEnoughIngredients() {
-		assertTrue(i.getCoffee() > r1.getAmtCoffee());
-		assertTrue(i.getMilk() > r1.getAmtMilk());
-		assertTrue(i.getSugar() > r1.getAmtSugar());
-		assertTrue(i.getChocolate() > r1.getAmtChocolate());
+		assertEquals(200, i.getChocolate());
+		assertEquals(200, i.getSugar());
+		assertEquals(200, i.getCoffee());
+		assertEquals(200, i.getMilk());		
+		assertTrue(i.enoughIngredients(r1));
 	}
 
 	/**
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#toString()}.
-	 
+	 */
 	@Test
 	public final void testToString() {
-		fail("Not yet implemented"); // TODO
-	}
-	*/
-
+		assertTrue(i.enoughIngredients(r1));
+		assertNotNull(i.toString());		
+	}	
 }

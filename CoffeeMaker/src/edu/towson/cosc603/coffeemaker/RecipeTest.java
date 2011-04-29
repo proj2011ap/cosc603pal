@@ -23,94 +23,96 @@ public class RecipeTest {
 		r2 = new Recipe();
 		cm = new CoffeeMaker();
 		i = cm.checkInventory();
+		r2.setName(name);
+		r2.setAmtChocolate(amtChocolate);
+		r2.setAmtCoffee(amtCoffee);
+		r2.setAmtMilk(amtMilk);
+		r2.setAmtSugar(amtSugar);
+		r2.setPrice(price);
 	}
 
 	@After
 	public void tearDown() throws Exception {
 		r2 = null;
 		cm = null;
+	}	
+	
+	@Test
+	public final void testGetAmtChocolate() {
+		assertEquals(1, r2.getAmtChocolate());		
 	}
 	
 	@Test
 	public final void testSetAmtChocolate() {
-		assertTrue(i.enoughIngredients(r2));
-		assertTrue(cm.addRecipe(r2));
+		r2.setAmtChocolate(amtChocolate);
+		assertEquals(amtChocolate, r2.getAmtChocolate());
 	}
-
-	@Test
-	public final void testGetAmtChocolate() {		
-		//cm.addRecipe(r2);
-		//assertTrue(i.enoughIngredients(r2));
-		//cm.addRecipe(r2);
-		
-		//assertEquals(1, r2.getAmtChocolate());
-	}
-
 	
 	@Test
 	public final void testGetAmtCoffee() {
-		fail("Not yet implemented"); // TODO
+		assertEquals(3, r2.getAmtCoffee());
 	}
 
 	@Test
 	public final void testSetAmtCoffee() {
-		//assertTrue(i.enoughIngredients(r2));		
-		//assertTrue(r2.setAmtCoffee(3));
+		r2.setAmtChocolate(amtCoffee);
+		assertEquals(amtCoffee, r2.getAmtCoffee());
 	}
 
 	@Test
 	public final void testGetAmtMilk() {
-		fail("Not yet implemented"); // TODO
+		assertEquals(3, r2.getAmtMilk());
 	}
 
 	@Test
 	public final void testSetAmtMilk() {
-		fail("Not yet implemented"); // TODO
+		r2.setAmtChocolate(amtMilk);
+		assertEquals(amtMilk, r2.getAmtMilk());
 	}
 
 	@Test
 	public final void testGetAmtSugar() {
-		fail("Not yet implemented"); // TODO
+		assertEquals(2, r2.getAmtSugar());
 	}
 
 	@Test
 	public final void testSetAmtSugar() {
-		fail("Not yet implemented"); // TODO
+		r2.setAmtChocolate(amtSugar);
+		assertEquals(amtSugar, r2.getAmtSugar());
 	}
 
 	@Test
-	public final void testGetName() {		
-		//assertTrue(i.enoughIngredients(r2));
-		cm.addRecipe(r2);
-		assertEquals("cappuccino", r2.getName());
+	public final void testGetName() {			
+		assertEquals("cappuccino", r2.getName().toString());
 	}
 
 	@Test
 	public final void testSetName() {
-		fail("Not yet implemented"); // TODO
+		assertEquals(name, r2.getName().toString());
 	}
 
 	@Test
 	public final void testGetPrice() {
-		assertEquals(70, cm.makeCoffee(r2, r2.getPrice()));
+		assertEquals(70, r2.getPrice());
 	}
 
 	@Test
 	public final void testSetPrice() {
-		assertEquals(r2.getPrice(), cm.makeCoffee(r2, 70));
+		assertEquals(price, r2.getPrice());
 		
 	}
 
 	@Test
-	public final void testEqualsRecipe() {
-		cm.addRecipe(r2);
-		assertTrue(cm.getRecipes().equals(r2));
+	public final void testEqualsRecipe() {		
+		assertEquals("cappuccino", r2.getName());
+		Recipe r4 = new Recipe();
+		cm.editRecipe(r2, r4);		
+		assertFalse(r4.equals(r2));
 	}
 
 	@Test
 	public final void testToString() {
-		cm.addRecipe(r2);
-		assertEquals("cappuccino", cm.getRecipes().toString());
+		assertEquals("cappuccino", r2.toString());
 	}
 
 }

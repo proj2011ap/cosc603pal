@@ -2,4 +2,4 @@ For task 1, briefly describe how the code coverage tool can help in developing t
 
 The code coverage tool was very helpful to make me determine which test cases are not covered 100% from the code coverage view. In my test cases, addItem and removeItem methods were not fully covered in VendingMachine.java. I fixed those two test methods by at the coverage value. Then only I could make it 100% coverage for VendingMachine.java file.
 
-I think simply using code coverage will not be good idea as testing metric. It can not eliminate mutants properly, I think so. So we need muclipse for that purpose. So this might be a weakness for code coverage.
+I think simply using code coverage will not be good idea as testing metric. It can not eliminate Mutants. So we need to do Mutation testing to test the exceptional test cases. So this might be a weakness for code coverage.

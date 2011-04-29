@@ -113,6 +113,6 @@ public class RecipeTest {
 	@Test
 	public final void testToString() {
 		assertEquals("cappuccino", r2.toString());
-	}
+	}	
 
 }

@@ -49,6 +49,12 @@ public class RecipeTest {
 	}
 	
 	@Test
+	public final void testSetAmtChocolate_negative() {
+		r2.setAmtChocolate(-2);
+		assertEquals(0, r2.getAmtChocolate());
+	}
+	
+	@Test
 	public final void testGetAmtCoffee() {
 		assertEquals(3, r2.getAmtCoffee());
 	}

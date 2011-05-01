@@ -75,7 +75,7 @@ public class InventoryTest extends TestCase{
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#getChocolate()}.
 	 */
 	@Test
-	public final void testGetChocolate() {
+	public final void testGetChocolate2() {
 		//i.setChocolate(200);
 		assertEquals(15, i.getChocolate());
 	}
@@ -84,7 +84,7 @@ public class InventoryTest extends TestCase{
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#setChocolate(int)}.
 	 */
 	@Test
-	public final void testSetChocolate() {
+	public final void testSetChocolate2() {
 		i.setChocolate(200);
 		assertEquals(200, i.getChocolate());
 	} 
@@ -100,7 +100,7 @@ public class InventoryTest extends TestCase{
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#getCoffee()}.
 	 */
 	@Test
-	public final void testGetCoffee() {
+	public final void testGetCoffee2() {
 		//i.setCoffee(200);
 		assertEquals(15, i.getCoffee());
 	}
@@ -109,7 +109,7 @@ public class InventoryTest extends TestCase{
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#setCoffee(int)}.
 	 */
  	@Test
-	public final void testSetCoffee() {
+	public final void testSetCoffee2() {
  		i.setCoffee(200);
  		assertEquals(200, i.getCoffee());
 	}
@@ -124,7 +124,7 @@ public class InventoryTest extends TestCase{
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#getMilk()}.
 	 */
 	@Test
-	public final void testGetMilk() {
+	public final void testGetMilk2() {
 	//	i.setMilk(200);
 		assertEquals(15, i.getMilk());
 	}
@@ -133,7 +133,7 @@ public class InventoryTest extends TestCase{
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#setMilk(int)}.
 	 */
 	@Test
-	public final void testSetMilk() {
+	public final void testSetMilk2() {
 		i.setMilk(100);
 		assertEquals(100, i.getMilk());
 	} 
@@ -149,7 +149,7 @@ public class InventoryTest extends TestCase{
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#getSugar()}.
 	 */
 	@Test
-	public final void testGetSugar() {
+	public final void testGetSugar2() {
 		//i.setSugar(200);
 		assertEquals(15, i.getSugar());
 	}
@@ -158,7 +158,7 @@ public class InventoryTest extends TestCase{
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#setSugar(int)}.
 	 */
 	@Test
-	public final void testSetSugar() {
+	public final void testSetSugar2() {
 		i.setSugar(150);
 		assertEquals(150, i.getSugar());
 	} 

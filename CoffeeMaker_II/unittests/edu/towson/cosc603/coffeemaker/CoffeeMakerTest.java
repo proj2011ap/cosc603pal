@@ -77,27 +77,27 @@ public class CoffeeMakerTest extends TestCase {
 		}
 	
 	@Test
-	public final void testGetName() {			
+	public final void testGetName1() {			
 		assertEquals("Coffee", r1.getName().toString());
 	}
 	
 	@Test
-	public final void testSetChocolate() {
+	public final void testSetChocolate1() {
 		assertEquals(amtChocolate, r1.getAmtChocolate());
 		}
 	
 	@Test
-	public final void testSetMilk() {
+	public final void testSetMilk1() {
 		assertEquals(amtMilk, r1.getAmtMilk());		
 	}
 	
 	@Test
-	public final void testSetCoffee() {
+	public final void testSetCoffee1() {
 		assertEquals(amtCoffee, r1.getAmtCoffee());
 	}
 	
 	@Test
-	public final void testSetSugar() {
+	public final void testSetSugar1() {
 		assertEquals(amtSugar, r1.getAmtSugar());
 	}
 	
@@ -115,7 +115,7 @@ public class CoffeeMakerTest extends TestCase {
 	}
 	
 	@Test
-	public void testMakeCoffee(){
+	public void testMakeCoffee1(){
 		assertTrue(i.enoughIngredients(r1));
 		assertNotNull(cm);
 		int amtPaid = 60;
@@ -125,7 +125,7 @@ public class CoffeeMakerTest extends TestCase {
 	
 	
 	@Test
-	public void testCanMakeCoffee(){
+	public void testCanMakeCoffee1(){
 		assertTrue(i.enoughIngredients(r1));
 		cm.addRecipe(r1);
 		assertEquals(50, r1.getPrice());
@@ -154,14 +154,14 @@ public class CoffeeMakerTest extends TestCase {
 	} 
 	
 	@Test
-	public void testGetRecipes(){
+	public void testGetRecipes1(){
 		assertTrue(cm.checkInventory().enoughIngredients(r1));
 		cm.addRecipe(r1);		
 		assertNotNull(cm.getRecipes());			
 	}	
 	
 	@Test
-	public void testGetRecipeForName(){
+	public void testGetRecipeForName1(){
 		cm.addRecipe(r1);
 		//cm.deleteRecipe(r1);
 		assertEquals("Coffee", cm.getRecipeForName(name).toString());		

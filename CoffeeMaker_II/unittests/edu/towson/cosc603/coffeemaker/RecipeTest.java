@@ -39,13 +39,13 @@ public class RecipeTest extends TestCase {
 	}	
 	
 	@Test
-	public final void testGetAmtChocolate() {
+	public final void testGetAmtChocolate3() {
 		r2.setAmtChocolate(1);
 		assertEquals(1, r2.getAmtChocolate());		
 	}
 	
 	@Test
-	public final void testSetAmtChocolate() {
+	public final void testSetAmtChocolate3() {
 		r2.setAmtChocolate(amtChocolate);
 		assertEquals(amtChocolate, r2.getAmtChocolate());
 	}
@@ -57,13 +57,13 @@ public class RecipeTest extends TestCase {
 	}
 	
 	@Test
-	public final void testGetAmtCoffee() {
+	public final void testGetAmtCoffee3() {
 		r2.setAmtCoffee(3);
 		assertEquals(3, r2.getAmtCoffee());
 	}	
 
 	@Test
-	public final void testSetAmtCoffee() {
+	public final void testSetAmtCoffee3() {
 		r2.setAmtCoffee(amtCoffee);
 		assertEquals(amtCoffee, r2.getAmtCoffee());
 	}
@@ -75,13 +75,13 @@ public class RecipeTest extends TestCase {
 	}
 
 	@Test
-	public final void testGetAmtMilk() {
+	public final void testGetAmtMilk3() {
 		r2.setAmtMilk(3);
 		assertEquals(3, r2.getAmtMilk());
 	}
 
 	@Test
-	public final void testSetAmtMilk() {
+	public final void testSetAmtMilk3() {
 		r2.setAmtMilk(amtMilk);
 		assertEquals(amtMilk, r2.getAmtMilk());
 	}
@@ -93,13 +93,13 @@ public class RecipeTest extends TestCase {
 	}
 
 	@Test
-	public final void testGetAmtSugar() {
+	public final void testGetAmtSugar3() {
 		r2.setAmtSugar(2);
 		assertEquals(2, r2.getAmtSugar());
 	}
 
 	@Test
-	public final void testSetAmtSugar() {
+	public final void testSetAmtSugar3() {
 		r2.setAmtSugar(amtSugar);
 		assertEquals(amtSugar, r2.getAmtSugar());
 	}
@@ -111,23 +111,23 @@ public class RecipeTest extends TestCase {
 	}
 
 	@Test
-	public final void testGetName() {			
+	public final void testGetName3() {			
 		assertEquals("cappuccino", r2.getName().toString());
 	}
 
 	@Test
-	public final void testSetName() {
+	public final void testSetName3() {
 		assertEquals(name, r2.getName().toString());
 	}
 
 	@Test
-	public final void testGetPrice() {
+	public final void testGetPrice3() {
 		r2.setPrice(70);
 		assertEquals(70, r2.getPrice());
 	}
 
 	@Test
-	public final void testSetPrice() {
+	public final void testSetPrice3() {
 		r2.setPrice(price);
 		assertEquals(price, r2.getPrice());
 		
@@ -141,7 +141,7 @@ public class RecipeTest extends TestCase {
 	}
 
 	@Test
-	public final void testEqualsRecipe() {		
+	public final void testEqualsRecipe3() {		
 		assertEquals("cappuccino", r2.getName());
 		Recipe r4 = new Recipe();
 		cm.editRecipe(r2, r4);		
@@ -157,7 +157,7 @@ public class RecipeTest extends TestCase {
 	}
 
 	@Test
-	public final void testToString() {
+	public final void testToString3() {
 		assertEquals("cappuccino", r2.toString());
 	}	
 

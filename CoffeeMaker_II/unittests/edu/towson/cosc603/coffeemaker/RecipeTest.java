@@ -64,13 +64,13 @@ public class RecipeTest extends TestCase {
 
 	@Test
 	public final void testSetAmtCoffee() {
-		r2.setAmtChocolate(amtCoffee);
+		r2.setAmtCoffee(amtCoffee);
 		assertEquals(amtCoffee, r2.getAmtCoffee());
 	}
 	
 	@Test
 	public final void testSetAmtCoffee_negativeAmt() {
-		r2.setAmtChocolate(-5);
+		r2.setAmtCoffee(-5);
 		assertEquals(0, r2.getAmtCoffee());
 	}
 
@@ -82,13 +82,13 @@ public class RecipeTest extends TestCase {
 
 	@Test
 	public final void testSetAmtMilk() {
-		r2.setAmtChocolate(amtMilk);
+		r2.setAmtMilk(amtMilk);
 		assertEquals(amtMilk, r2.getAmtMilk());
 	}
 	
 	@Test
 	public final void testSetAmtMilk_negativeAmt() {
-		r2.setAmtChocolate(-2);
+		r2.setAmtMilk(-2);
 		assertEquals(0, r2.getAmtMilk());
 	}
 
@@ -100,13 +100,13 @@ public class RecipeTest extends TestCase {
 
 	@Test
 	public final void testSetAmtSugar() {
-		r2.setAmtChocolate(amtSugar);
+		r2.setAmtSugar(amtSugar);
 		assertEquals(amtSugar, r2.getAmtSugar());
 	}
 	
 	@Test
 	public final void testSetAmtSugar_negativeAmt() {
-		r2.setAmtChocolate(-3);
+		r2.setAmtSugar(-3);
 		assertEquals(0, r2.getAmtSugar());
 	}
 
@@ -132,6 +132,13 @@ public class RecipeTest extends TestCase {
 		assertEquals(price, r2.getPrice());
 		
 	}
+	
+	@Test
+	public final void testSetPrice_negPrice() {
+		r2.setPrice(-50);
+		assertEquals(0, r2.getPrice());
+		
+	}
 
 	@Test
 	public final void testEqualsRecipe() {		
@@ -139,6 +146,14 @@ public class RecipeTest extends TestCase {
 		Recipe r4 = new Recipe();
 		cm.editRecipe(r2, r4);		
 		assertFalse(r4.equals(r2));
+	}
+	
+	@Test
+	public final void testEqualsRecipe_empty() {		
+		r2.setName(" ");
+		Recipe r5 = new Recipe();
+		cm.editRecipe(r2, r5);
+		assertEquals(" ", r2.getName());
 	}
 
 	@Test

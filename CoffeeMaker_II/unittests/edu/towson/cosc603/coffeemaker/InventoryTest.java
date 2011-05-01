@@ -40,10 +40,10 @@ public class InventoryTest extends TestCase{
 		r1.setAmtSugar(amtSugar); //1
 		r1.setAmtChocolate(amtChocolate); //0
 		r1.setPrice(price);//50
-		//i.setChocolate(200);
-		//i.setCoffee(200);
-		//i.setMilk(200);
-		//i.setSugar(200);
+	//	i.setChocolate(15);
+	//	i.setCoffee(15);
+	//	i.setMilk(15);
+	//	i.setSugar(15);
 	}
 
 	/**
@@ -63,10 +63,10 @@ public class InventoryTest extends TestCase{
 	public final void testInventory_enoughIngr() {
 		assertNotNull(cm.addInventory(15, 15, 15, 15));
 		cm.addRecipe(r1);
-		//assertEquals(15, i.getChocolate());
-		//assertEquals(15, i.getSugar());
-		//assertEquals(15, i.getCoffee());
-		//assertEquals(15, i.getMilk());		
+		assertEquals(30, i.getChocolate());
+		assertEquals(30, i.getSugar());
+		assertEquals(30, i.getCoffee());
+		assertEquals(30, i.getMilk());		
 		assertTrue(i.enoughIngredients(r1));
 	}
 	
@@ -122,7 +122,7 @@ public class InventoryTest extends TestCase{
 	 */
 	@Test
 	public final void testSetMilk() {
-		assertEquals(200, i.getMilk());
+		assertEquals(15, i.getMilk());
 	} 
 	
 
@@ -140,7 +140,7 @@ public class InventoryTest extends TestCase{
 	 */
 	@Test
 	public final void testSetSugar() {
-		assertEquals(200, i.getSugar());
+		assertEquals(15, i.getSugar());
 	} 
 	
 
@@ -149,10 +149,10 @@ public class InventoryTest extends TestCase{
 	 */
 	@Test
 	public final void testEnoughIngredients() {
-		assertEquals(200, i.getChocolate());
-		assertEquals(200, i.getSugar());
-		assertEquals(200, i.getCoffee());
-		assertEquals(200, i.getMilk());		
+		assertEquals(15, i.getChocolate());
+		assertEquals(15, i.getSugar());
+		assertEquals(15, i.getCoffee());
+		assertEquals(15, i.getMilk());		
 		assertTrue(i.enoughIngredients(r1));
 	}
 

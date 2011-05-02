@@ -154,6 +154,17 @@ public class CoffeeMakerTest extends TestCase {
 		i.setSugar(0);
 		cm.addInventory(-15, -15, -15, -15);
 		assertFalse(i.enoughIngredients(r1));			
+	}
+	
+	@Test//added to kill COR_6 in addInventory, but did not work
+	public void testAddInventory_ngAmtAddedSugChoco(){	
+		cm.addRecipe(r1);		
+		i.setChocolate(1);
+		i.setCoffee(1);
+		i.setMilk(1);
+		i.setSugar(1);
+		cm.addInventory(15, 15, -10, -10);
+		assertFalse(i.enoughIngredients(r1));			
 	}	
 	
 	@Test
@@ -197,15 +208,19 @@ public class CoffeeMakerTest extends TestCase {
 	} 
 	
 
-	@Test
+	@Test//try to kill AORB 29 alive in makeCoffe() method
 	public void testCanMakeCoffee1_setInventory(){
 		assertTrue(i.enoughIngredients(r1));
 		cm.addRecipe(r1);
 		assertEquals(50, r1.getPrice());
 		cm.makeCoffee(r1, 50);	
 		assertEquals(13, i.getSugar() - r1.getAmtSugar());
+		assertEquals(15, i.getCoffee()- r1.getAmtCoffee());
+		assertEquals(13, i.getMilk() - r1.getAmtSugar());
+		assertEquals(15, i.getChocolate() - r1.getAmtChocolate());
 	} 
 	
+		
 	@Test
 	public void testCanNotMakeCoffee_lessResource(){
 		i.setChocolate(1);

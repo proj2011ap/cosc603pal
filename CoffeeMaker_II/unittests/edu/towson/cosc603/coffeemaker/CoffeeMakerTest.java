@@ -155,6 +155,21 @@ public class CoffeeMakerTest extends TestCase {
 		cm.addInventory(-15, -15, -15, -15);
 		assertFalse(i.enoughIngredients(r1));			
 	}	
+	
+	@Test
+	public void testAddInventory_getTotalAmtInventory(){	
+		i.setChocolate(5);
+		i.setCoffee(5);
+		i.setMilk(5);
+		i.setSugar(5);
+		cm.addInventory(105, 105, 105, 105);
+		assertEquals(110, i.getChocolate());			
+		assertEquals(110, i.getCoffee());
+		assertEquals(110, i.getMilk());
+		assertEquals(110, i.getSugar());
+	}	
+	
+	
 		
 	@Test
 	public void testCheckInventory1(){

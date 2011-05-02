@@ -57,10 +57,20 @@ public class CoffeeMakerTest extends TestCase {
 	}
 	
 	@Test
+	public void testAddRecipe1_alreadyExists() {		
+		cm.addRecipe(r1);	
+		cm.addRecipe(r1);
+		cm.addRecipe(r3);
+		cm.addRecipe(r4);		
+		assertFalse(cm.addRecipe(r1));		
+	}
+	
+	@Test
 	public void testDeleteRecipe1() {
 		cm.addRecipe(r1);
 		assertTrue(cm.deleteRecipe(r1));
-	}
+	}	
+	
 	
 	@Test
 	public void testEditRecipe1() {
@@ -72,7 +82,35 @@ public class CoffeeMakerTest extends TestCase {
 	}
 	
 	@Test
-	public final void testSetName() {
+	public void testEditRecipe1_with5thRecipe() {
+		cm.addRecipe(r1);
+		cm.addRecipe(r2);
+		cm.addRecipe(r3);
+		cm.addRecipe(r4);		
+		Recipe r5 = new Recipe();		
+		assertFalse(cm.editRecipe(r3, r5));
+	}
+	
+	@Test
+	public void testEditRecipe1_withOldRecipe() {	
+		cm.addRecipe(r2);
+		cm.addRecipe(r3);
+		cm.addRecipe(r4);
+		Recipe r2 = new Recipe();		
+		assertFalse(cm.editRecipe(r3, r2));
+	}
+	
+	@Test
+	public void testEditRecipe1_Recipe() {	
+		cm.addRecipe(r2);
+		cm.addRecipe(r3);
+		r3.equals(r2);
+		//assertFalse(cm.addRecipe(r2));		
+		assertFalse(cm.editRecipe(r3, r2));
+	}
+	
+	@Test
+	public final void testSetName1() {
 		assertEquals(name, r1.getName());		
 		}
 	
@@ -102,13 +140,24 @@ public class CoffeeMakerTest extends TestCase {
 	}
 	
 	@Test
-	public void testAddInventory(){
+	public void testAddInventory1(){
 		cm.addInventory(15, 15, 15, 15);
 		assertNotNull(i);		
 	}	
+	
+	@Test
+	public void testAddInventory_negAmt(){	
+		cm.addRecipe(r1);		
+		i.setChocolate(0);
+		i.setCoffee(0);
+		i.setMilk(0);
+		i.setSugar(0);
+		cm.addInventory(-15, -15, -15, -15);
+		assertFalse(i.enoughIngredients(r1));			
+	}	
 		
 	@Test
-	public void testCheckInventory(){
+	public void testCheckInventory1(){
 		assertNotNull(cm.addInventory(15, 15, 15, 15));
 		cm.addRecipe(r1);
 		assertTrue(i.enoughIngredients(r1));				
@@ -132,6 +181,16 @@ public class CoffeeMakerTest extends TestCase {
 		assertNotNull(cm.makeCoffee(r1, 50));			
 	} 
 	
+
+	@Test
+	public void testCanMakeCoffee1_setInventory(){
+		assertTrue(i.enoughIngredients(r1));
+		cm.addRecipe(r1);
+		assertEquals(50, r1.getPrice());
+		cm.makeCoffee(r1, 50);	
+		assertEquals(13, i.getSugar() - r1.getAmtSugar());
+	} 
+	
 	@Test
 	public void testCanNotMakeCoffee_lessResource(){
 		i.setChocolate(1);
@@ -149,8 +208,26 @@ public class CoffeeMakerTest extends TestCase {
 		assertTrue(i.enoughIngredients(r1));		
 		int amtPaid = 40;
 		r1.setPrice(50);
-		assertNotNull(cm.makeCoffee(r1, 40));
+		assertNotSame(50,cm.makeCoffee(r1, 40));
 	//	assertEquals(10, amtPaid - r1.getPrice());								
+	}	
+		
+	@Test
+	public void testCanMakeCoffee_returnNegPricePaid(){
+		assertTrue(i.enoughIngredients(r1));		
+		r1.setPrice(50);	
+		int amtPaid = -100;
+		assertEquals(-150, amtPaid - r1.getPrice());
+		assertFalse(cm.getRecipes().equals(r1));								
+	} 
+	
+	@Test
+	public void testCanMakeCoffee_returnNoPricePaid(){
+		assertTrue(i.enoughIngredients(r1));		
+		r1.setPrice(50);	
+		int amtPaid = 0;
+		assertEquals(-50, amtPaid - r1.getPrice());
+		assertFalse(cm.getRecipes().equals(r1));								
 	} 
 	
 	@Test

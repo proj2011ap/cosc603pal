@@ -174,7 +174,7 @@ public class InventoryTest extends TestCase{
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#enoughIngredients(edu.towson.cosc603.coffeemaker.Recipe)}.
 	 */
 	@Test
-	public final void testEnoughIngredients() {
+	public final void testEnoughIngredients2() {
 		assertEquals(15, i.getChocolate());
 		assertEquals(15, i.getSugar());
 		assertEquals(15, i.getCoffee());
@@ -199,7 +199,7 @@ public class InventoryTest extends TestCase{
 	 * Test method for {@link edu.towson.cosc603.coffeemaker.Inventory#toString()}.
 	 */
 	@Test
-	public final void testToString() {
+	public final void testToString2() {
 		assertTrue(i.enoughIngredients(r1));
 		assertNotNull(i.toString());		
 	}	

@@ -15,13 +15,14 @@ public class RecipeTest extends TestCase {
     private int amtSugar ; //= 2
     private int amtChocolate; //= 1
     
-    private Recipe r2;
+    private Recipe r2, r3;
     private CoffeeMaker cm;
     private Inventory i;
     
 	@Before
 	public void setUp() throws Exception {
 		r2 = new Recipe();
+		r3 = new Recipe();
 		cm = new CoffeeMaker();
 		i = cm.checkInventory();
 		r2.setName(name);
@@ -151,10 +152,18 @@ public class RecipeTest extends TestCase {
 	@Test
 	public final void testEqualsRecipe_empty() {		
 		r2.setName(" ");
-		Recipe r5 = new Recipe();
-		cm.editRecipe(r2, r5);
-		assertEquals(" ", r2.getName());
+		Recipe r5 = new Recipe();	
+		assertFalse(cm.editRecipe(r2, r5));		
 	}
+	
+	@Test
+	public final void testEqualsRecipe_not() {	
+		cm.addRecipe(r2);
+		cm.addRecipe(r3);
+		assertFalse(cm.editRecipe(r2, r3));
+		assertFalse(r3.equals(r2));		
+	}	
+	
 
 	@Test
 	public final void testToString3() {

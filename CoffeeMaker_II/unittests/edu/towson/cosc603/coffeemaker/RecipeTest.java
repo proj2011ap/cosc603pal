@@ -150,10 +150,22 @@ public class RecipeTest extends TestCase {
 	}
 	
 	@Test
-	public final void testEqualsRecipe_empty() {		
+	public final void testEqualsRecipe_emptyOld() {		
 		r2.setName(" ");
-		Recipe r5 = new Recipe();	
-		assertFalse(cm.editRecipe(r2, r5));		
+		Recipe r5 = new Recipe();
+		r5.setName("Cafelate");
+		cm.editRecipe(r2, r5);
+		
+		assertFalse(r2.equals(r5));		
+	}
+	
+	@Test
+	public final void testEqualsRecipe_emptyNew() {	
+		Recipe r3 = new Recipe();
+		r3.setName(" ");
+		r2.setName(name);
+		cm.editRecipe(r2, r3);
+		assertFalse(r2.equals(r3));		
 	}
 	
 	@Test

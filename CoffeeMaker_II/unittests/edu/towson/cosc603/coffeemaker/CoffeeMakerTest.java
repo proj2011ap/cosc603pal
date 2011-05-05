@@ -196,8 +196,8 @@ public class CoffeeMakerTest extends TestCase {
 		int amtPaid = 60;
 		assertEquals(50, r1.getPrice());
 		assertEquals(10, amtPaid - r1.getPrice());		
-	}
-	
+	}	
+		
 	
 	@Test
 	public void testCanMakeCoffee1(){
@@ -208,7 +208,7 @@ public class CoffeeMakerTest extends TestCase {
 	} 
 	
 
-	@Test//try to kill AORB 29 alive in makeCoffe() method
+	@Test//to kill AORB_29, AORB_36, LOI_41 in makeCoffe() method
 	public void testCanMakeCoffee1_setInventory(){
 		assertTrue(i.enoughIngredients(r1));
 		cm.addRecipe(r1);
@@ -218,6 +218,8 @@ public class CoffeeMakerTest extends TestCase {
 		assertEquals(15, i.getCoffee()- r1.getAmtCoffee());
 		assertEquals(13, i.getMilk() - r1.getAmtSugar());
 		assertEquals(15, i.getChocolate() - r1.getAmtChocolate());
+		assertEquals(10, cm.makeCoffee(r1, 60));
+		assertEquals(20, cm.makeCoffee(r1, 20));
 	} 
 	
 		

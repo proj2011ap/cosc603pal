@@ -49,13 +49,7 @@ public class RecipeTest extends TestCase {
 	public final void testSetAmtChocolate3() {
 		r2.setAmtChocolate(amtChocolate);
 		assertEquals(amtChocolate, r2.getAmtChocolate());
-	}
-	
-	@Test
-	public final void testSetAmtChocolate3_zero() {
-		r2.setAmtChocolate(0);
-		assertEquals(0, r2.getAmtChocolate());
-	}
+	}	
 	
 	@Test
 	public final void testSetAmtChocolate_negativeAmt() {
@@ -110,14 +104,7 @@ public class RecipeTest extends TestCase {
 		r2.setAmtSugar(2);
 		assertEquals(2, r2.getAmtSugar());
 	}
-	
-	@Test
-	public final void testSetAmtSugar3_zero() {
-		r2.setAmtSugar(0);
-		i.setSugar(100);
-		assertEquals(100, i.getSugar() - r2.getAmtSugar());
-	}
-	
+				
 	@Test
 	public final void testSetAmtSugar_negativeAmt() {
 		r2.setAmtSugar(-3);
@@ -147,12 +134,6 @@ public class RecipeTest extends TestCase {
 		
 	}
 	
-	@Test
-	public final void testSetPrice3_zero() {
-		r2.setPrice(0);
-		
-		assertEquals(0, r2.getPrice());	
-	}
 	
 	@Test
 	public final void testSetPrice_negPrice() {
@@ -174,9 +155,16 @@ public class RecipeTest extends TestCase {
 		r2.setName(" ");
 		Recipe r5 = new Recipe();
 		r5.setName("Cafelate");
-		cm.editRecipe(r2, r5);
-		
+		cm.editRecipe(r2, r5);		
 		assertFalse(r2.equals(r5));		
+	}
+	
+	@Test
+	public final void testEqualsRecipe_equals() {		
+		r2.setName("cookies");
+		Recipe r5 = new Recipe();
+		r5.setName("cookies");
+		assertTrue(r2.equals(r5));		
 	}
 	
 	@Test
